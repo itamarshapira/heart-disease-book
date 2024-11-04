@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Heart Disease Prediction Showcase &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'showcase';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Dictionary" href="data_dic.html" />
+    <link rel="prev" title="Welcome to Heart Disease Prediction Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="My sample book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to Heart Disease Prediction Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Heart Disease Prediction Showcase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_dic.html">Data Dictionary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_training.html">Model Training and Methodology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="software-design.html">Software Design</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fshowcase.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/showcase.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Heart Disease Prediction Showcase</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-patterns-in-the-data">Initial Patterns in the Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heart-disease-frequency-according-to-sex">1. Heart Disease Frequency According to Sex</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heart-disease-frequency-per-chest-pain-type">2. Heart Disease Frequency per Chest Pain Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-vs-max-heart-rate-for-heart-disease">3. Age vs. Max Heart Rate for Heart Disease</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualizations-and-insights">Data Visualizations and Insights</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-matrix">1. Correlation Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-performance-metrics">2. Model Performance Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">Classification Report</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-based-insights">3. Probability-Based Insights</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-on-a-range-of-hypothetical-patients">Predict on a Range of Hypothetical Patients</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-group-segmentation">Risk Group Segmentation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-plot">4. Feature Importance Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shap-summary-plot">5. SHAP Summary Plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="heart-disease-prediction-showcase">
+<h1>Heart Disease Prediction Showcase<a class="headerlink" href="#heart-disease-prediction-showcase" title="Link to this heading">#</a></h1>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>This showcase presents the key visualizations and insights from the Heart Disease Prediction Project. The goal is to highlight the most important findings without diving into detailed code.</p>
+<p>starting with patterns observed in the data and then explaining how machine learning helps improve our understanding and predictions.</p>
+</div>
+<section id="initial-patterns-in-the-data">
+<h2>Initial Patterns in the Data<a class="headerlink" href="#initial-patterns-in-the-data" title="Link to this heading">#</a></h2>
+<section id="heart-disease-frequency-according-to-sex">
+<h3>1. Heart Disease Frequency According to Sex<a class="headerlink" href="#heart-disease-frequency-according-to-sex" title="Link to this heading">#</a></h3>
+<p><img alt="Heart Disease Frequency by Sex" src="_images/sex.png" /></p>
+<p><em>Description</em>: This bar plot shows the frequency of heart disease among males and females. Males have a higher incidence of heart disease compared to females.</p>
+</section>
+<section id="heart-disease-frequency-per-chest-pain-type">
+<h3>2. Heart Disease Frequency per Chest Pain Type<a class="headerlink" href="#heart-disease-frequency-per-chest-pain-type" title="Link to this heading">#</a></h3>
+<p><img alt="Heart Disease Frequency by Chest Pain Type" src="_images/cp.png" /></p>
+<p><em>Description</em>: This plot illustrates the distribution of heart disease across different chest pain types:</p>
+<ul class="simple">
+<li><p><strong>0: Typical angina</strong> – Chest pain related to decreased blood supply to the heart.</p></li>
+<li><p><strong>1: Atypical angina</strong> – Chest pain not related to the heart.</p></li>
+<li><p><strong>2: Non-anginal pain</strong> – Typically esophageal spasms, not heart-related.</p></li>
+<li><p><strong>3: Asymptomatic</strong> – Chest pain without showing signs of disease.</p></li>
+</ul>
+<p><em>Insight</em>: Patients with asymptomatic chest pain (type 3) show the highest frequency of heart disease.</p>
+</section>
+<section id="age-vs-max-heart-rate-for-heart-disease">
+<h3>3. Age vs. Max Heart Rate for Heart Disease<a class="headerlink" href="#age-vs-max-heart-rate-for-heart-disease" title="Link to this heading">#</a></h3>
+<p><img alt="Age vs. Max Heart Rate" src="_images/age-hr.png" /></p>
+<p><em>Description</em>: This scatter plot examines the relationship between age and maximum heart rate, distinguishing patients with and without heart disease. Unlike the previous clear patterns, this relationship is less straightforward, demonstrating the complexity that machine learning models can help unravel.</p>
+</section>
+</section>
+<section id="data-visualizations-and-insights">
+<h2>Data Visualizations and Insights<a class="headerlink" href="#data-visualizations-and-insights" title="Link to this heading">#</a></h2>
+<section id="correlation-matrix">
+<h3>1. Correlation Matrix<a class="headerlink" href="#correlation-matrix" title="Link to this heading">#</a></h3>
+<p><img alt="tools Image" src="_images/cor.png" /></p>
+<p><em>Description</em>: The heatmap illustrates relationships between features, helping identify variables that are strongly correlated. It gives a first impression of which features might be important for predicting heart disease.</p>
+</section>
+<section id="model-performance-metrics">
+<h3>2. Model Performance Metrics<a class="headerlink" href="#model-performance-metrics" title="Link to this heading">#</a></h3>
+<section id="classification-report">
+<h4>Classification Report<a class="headerlink" href="#classification-report" title="Link to this heading">#</a></h4>
+<p><img alt="Classification Report" src="_images/classification-report.png" /></p>
+<p><em>Description</em>: The classification report provides precision, recall, and F1-score for each class. It offers a summary of the model’s performance, highlighting how well the model differentiates between patients with and without heart disease.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Precision</span></code></strong>: Precision measures the accuracy of positive predictions. It tells you, out of all instances predicted as a certain class (0 or 1 here), how many were actually correct. <code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">precision</span> <span class="pre">means</span> <span class="pre">a</span> <span class="pre">low</span> <span class="pre">false</span> <span class="pre">positive</span> <span class="pre">rate</span></code> (in the confusion matrix).</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Recall</span></code></strong>: It tells you, out of all the actual instances of a class, how many were correctly predicted. <code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">recall</span> <span class="pre">means</span> <span class="pre">a</span> <span class="pre">low</span> <span class="pre">false</span> <span class="pre">negative</span> <span class="pre">rate.</span></code></p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">F1-score:</span></code></strong> The F1-score is the harmonic mean of precision and recall. It provides a balance between the two</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Support</span></code></strong>: Support represents the actual number of occurrences of each class in the y_test dataset. It indicates how many instances of each class were used to calculate the precision, recall, and F1-score for that class.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Accuracy</span></code></strong>: The overall accuracy of the model, which represents the percentage of correct predictions out of all predictions.(the defualt of using score()).</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Macro</span> <span class="pre">avg</span></code></strong>: This is the average of precision, recall, and F1-score for both classes (0 and 1), calculated without considering class imbalance. It is a simple average.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Weighted</span> <span class="pre">avg</span></code></strong>: This is the average of precision, recall, and F1-score for both classes, weighted by the support (number of instances) for each class.</p>
+</section>
+<section id="confusion-matrix">
+<h4>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h4>
+<p><img alt="Confusion Matrix" src="_images/con-matrix.png" /></p>
+<p><em>Description</em>: The confusion matrix visualizes the model’s predictions compared to the actual outcomes. It helps identify where the model is making correct predictions and where it may be misclassifying patients.</p>
+</section>
+</section>
+<section id="probability-based-insights">
+<h3>3. Probability-Based Insights<a class="headerlink" href="#probability-based-insights" title="Link to this heading">#</a></h3>
+<section id="predict-on-a-range-of-hypothetical-patients">
+<h4>Predict on a Range of Hypothetical Patients<a class="headerlink" href="#predict-on-a-range-of-hypothetical-patients" title="Link to this heading">#</a></h4>
+<p><img alt="Probability Prediction" src="_images/prob.png" /></p>
+<p><em>Description</em>: This visualization shows the model’s predictions for a range of hypothetical patients. It provides a probability score for each patient, indicating the likelihood of having heart disease. This helps to understand how the model assesses risk based on different combinations of features.</p>
+</section>
+<section id="risk-group-segmentation">
+<h4>Risk Group Segmentation<a class="headerlink" href="#risk-group-segmentation" title="Link to this heading">#</a></h4>
+<p><img alt="Risk Group Segmentation" src="_images/prob2.png" /></p>
+<p><em>Description</em>: This chart segments patients into risk groups (e.g., Low, Medium, High) based on their predicted probabilities of heart disease. It helps to categorize patients and prioritize those who may need further medical attention.</p>
+</section>
+</section>
+<section id="feature-importance-plot">
+<h3>4. Feature Importance Plot<a class="headerlink" href="#feature-importance-plot" title="Link to this heading">#</a></h3>
+<p><img alt="Feature Importance" src="_images/feature-importence.png" /></p>
+<p><em>Description</em>: This plot highlights the features that most influence the model’s predictions. Chest pain type (<code class="docutils literal notranslate"><span class="pre">cp</span></code>) and <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code> are among the most significant predictors.</p>
+</section>
+<section id="shap-summary-plot">
+<h3>5. SHAP Summary Plot<a class="headerlink" href="#shap-summary-plot" title="Link to this heading">#</a></h3>
+<p><img alt="SHAP Summary Plot" src="_images/shap.png" /></p>
+<p><em>Description</em>: The SHAP plot provides a detailed view of how individual features impact model predictions, with red indicating an increase in the likelihood of heart disease and blue indicating a decrease.</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">SHAP</span> <span class="pre">Values</span> <span class="pre">&lt;</span> <span class="pre">0:</span></code> The feature decreases the model’s predicted probability of heart disease.</strong></p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">SHAP</span> <span class="pre">Values</span> <span class="pre">&gt;</span> <span class="pre">0:</span></code> The feature increases the model’s predicted probability of heart disease.</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Red:</span> <span class="pre">High</span> <span class="pre">feature</span> <span class="pre">value</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Blue:</span> <span class="pre">Low</span> <span class="pre">feature</span> <span class="pre">value</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>The initial patterns in the data give us some insights, but the relationships are often complex and not easily interpretable. By leveraging machine learning and interpretability techniques, we can better understand the underlying factors contributing to heart disease risk.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to Heart Disease Prediction Book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data_dic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Dictionary</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-patterns-in-the-data">Initial Patterns in the Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heart-disease-frequency-according-to-sex">1. Heart Disease Frequency According to Sex</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heart-disease-frequency-per-chest-pain-type">2. Heart Disease Frequency per Chest Pain Type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age-vs-max-heart-rate-for-heart-disease">3. Age vs. Max Heart Rate for Heart Disease</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualizations-and-insights">Data Visualizations and Insights</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-matrix">1. Correlation Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-performance-metrics">2. Model Performance Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-report">Classification Report</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-based-insights">3. Probability-Based Insights</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-on-a-range-of-hypothetical-patients">Predict on a Range of Hypothetical Patients</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#risk-group-segmentation">Risk Group Segmentation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance-plot">4. Feature Importance Plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shap-summary-plot">5. SHAP Summary Plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
