@@ -1,7 +1,7 @@
 # Software Design
 This project is organized into a comprehensive data science workflow consisting of six steps:
 
-![Data Science Process](../images/tools.png)
+![Data Science Process](./images/tools.png)
 
 ## 1. Problem Definition
 - The goal is to predict the likelihood of a patient having heart disease using their medical data.
