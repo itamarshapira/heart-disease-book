@@ -9,7 +9,7 @@ starting with patterns observed in the data and then explaining how machine lear
 ## Initial Patterns in the Data
 
 ### 1. Heart Disease Frequency According to Sex
-![Heart Disease Frequency by Sex](../images/sex.png)
+![Heart Disease Frequency by Sex](./images/sex.png)
 
 *Description*: This bar plot shows the frequency of heart disease among males and females. Males have a higher incidence of heart disease compared to females.
 
