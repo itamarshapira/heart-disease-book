@@ -4,8 +4,8 @@
 format: jb-book
 root: intro
 chapters:
-  
-  - file: showcase
+
   - file: data_dic
+  - file: showcase
   - file: model_training
   - file: software-design
