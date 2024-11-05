@@ -5,7 +5,7 @@ This section outlines the methodology used to train the machine learning model f
 ## Model Selection
 We experimented with several models, including Logistic Regression, K-Nearest Neighbors (KNN), CatBoost , XGBoost and Random Forest, to determine the most effective approach. As shown in the chart below, **Logistic Regression** emerged as the most robust model with an accuracy of over 0.88.
 
-![Model Comparison](../images/models.png)
+![Model Comparison](./images/models.png)
 
 
 
