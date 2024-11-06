@@ -11,7 +11,7 @@ starting with patterns observed in the data and then explaining how machine lear
 ### 1. Heart Disease Frequency According to Sex
 ![Heart Disease Frequency by Sex](./images/sex.png)
 
-*Description*: This bar plot shows the frequency of heart disease among males and females. Males have a higher incidence of heart disease compared to females.
+*Description*: This bar plot shows the frequency of heart disease among males and females. Females have a higher incidence of heart disease compared to females.
 
 ### 2. Heart Disease Frequency per Chest Pain Type
 ![Heart Disease Frequency by Chest Pain Type](./images/cp.png)
@@ -22,7 +22,7 @@ starting with patterns observed in the data and then explaining how machine lear
 - **2: Non-anginal pain** – Typically esophageal spasms, not heart-related.
 - **3: Asymptomatic** – Chest pain without showing signs of disease.
   
-*Insight*: Patients with asymptomatic chest pain (type 3) show the highest frequency of heart disease.
+*Insight*: Patients with asymptomatic chest pain (type 2) show the highest frequency of heart disease.
 
 ### 3. Age vs. Max Heart Rate for Heart Disease
 ![Age vs. Max Heart Rate](./images/age-hr.png)
